@@ -1,9 +1,13 @@
 <template>
   <div class="todolist">
-    <input type="text" v-model="newTodo">
-    <button @click=addTodo()>+</button>
-    <ul v-for="todo in todos">
-      <li>{{ todo.title }}</li>
+    <input type="text" v-model="newTodo.title" style="width: 400px;">
+    <input type="checkbox" v-model="newTodo.completed"></input>
+    <!--<button @click=addTodo()>+</button>-->
+    <input type="submit" class="button button-outline" @click=addTodo() value="Add Task"></input>
+    <ul v-for="todo in todos" style="padding: 0; list-style-type: none;">
+      <li style="display: inline-block; margin: 0 10px;">
+        {{ todo.title }}
+      </li>
     </ul>
   </div>
 </template>
@@ -14,7 +18,10 @@ export default {
 
   data () {
     return {
-      newTodo: '',
+      newTodo: {
+        title: '',
+        completed: false
+      },
 
       todos: []
     }
@@ -22,37 +29,19 @@ export default {
 
   methods: {
     addTodo: function () {
-      var task = this.newTodo.trim()
+      var taskTitle = this.newTodo.title.trim()
+      var taskCompleted = this.newTodo.completed
 
-      if (task) {
+      if (taskTitle) {
         this.todos.push({
-          title: task
+          title: taskTitle,
+          completed: taskCompleted
         })
       }
 
-      this.newTodo = ''
+      this.newTodo.title = ''
+      this.newTodo.completed = false
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
