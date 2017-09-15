@@ -1,5 +1,7 @@
 <template>
   <div class="todolist">
+    <input type="text" v-model="newTodo">
+    <button @click=addTodo()>+</button>
     <ul v-for="todo in todos">
       <li>{{ todo.title }}</li>
     </ul>
@@ -9,19 +11,26 @@
 <script>
 export default {
   name: 'TodoList',
+
   data () {
     return {
-      todos: [
-        {
-          title: 'Todo A'
-        },
-        {
-          title: 'Todo B'
-        },
-        {
-          title: 'Todo C'
-        }
-      ]
+      newTodo: '',
+
+      todos: []
+    }
+  },
+
+  methods: {
+    addTodo: function () {
+      var task = this.newTodo.trim()
+
+      if (task) {
+        this.todos.push({
+          title: task
+        })
+      }
+
+      this.newTodo = ''
     }
   }
 }
