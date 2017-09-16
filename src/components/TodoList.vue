@@ -1,12 +1,13 @@
 <template>
   <div class="todolist">
     <input type="text" v-model="newTodo.title" style="width: 400px;">
-    <input type="checkbox" v-model="newTodo.completed"></input>
+    <input type="checkbox" v-model="newTodo.completed">
     <!--<button @click=addTodo()>+</button>-->
-    <input type="submit" class="button button-outline" @click=addTodo() value="Add Task"></input>
-    <ul v-for="todo in todos" style="padding: 0; list-style-type: none;">
-      <li style="display: inline-block; margin: 0 10px;">
-        {{ todo.title }}
+    <input type="submit" class="button button-outline" @click="addTodo()" value="Add Task"></input>
+    <ul style="padding: 0; list-style-type: none;">
+      <li v-for="todo in todos" style="display: inline-block; margin: 0 10px;">
+        <label>{{ todo.title }} <input type="checkbox"></label>
+        <button @click="removeTodo(todo)" class="button-small">Remove</button>
       </li>
     </ul>
   </div>
@@ -41,7 +42,24 @@ export default {
 
       this.newTodo.title = ''
       this.newTodo.completed = false
+    },
+
+    removeTodo: function (task) {
+      var index = this.todos.indexOf(task)
+      this.todos.splice(index, 1)
     }
   }
 }
 </script>
+
+<style type="text/css">
+
+  /* Custom size */
+  .button-small {
+    font-size: .8rem;
+    height: 2.8rem;
+    line-height: 2.8rem;
+    padding: 0 1.5rem;
+  }
+
+</style>
