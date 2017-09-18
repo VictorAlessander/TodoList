@@ -1,12 +1,11 @@
 <template>
   <div class="todolist">
     <input type="text" v-model="newTodo.title" style="width: 400px;">
-    <input type="checkbox" v-model="newTodo.completed">
     <!--<button @click=addTodo()>+</button>-->
     <input type="submit" class="button button-outline" @click="addTodo()" value="Add Task"></input>
     <ul style="padding: 0; list-style-type: none;">
       <li v-for="todo in todos" style="display: inline-block; margin: 0 10px;">
-        <label>{{ todo.title }} <input type="checkbox"></label>
+        <label>{{ todo.title }} <input type="checkbox" v-model="todo.completed"></label>
         <button @click="removeTodo(todo)" class="button-small">Remove</button>
       </li>
     </ul>
