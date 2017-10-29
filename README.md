@@ -1,5 +1,7 @@
 # todolist
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3366473292154516957b3df472fe0d40)](https://www.codacy.com/app/VictorAlessander/TodoList?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VictorAlessander/TodoList&amp;utm_campaign=Badge_Grade)
+
 > A first Vue.js project made by me
 
 ## Build Setup
@@ -10,12 +12,3 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
